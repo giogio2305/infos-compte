@@ -1,0 +1,327 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display?styles=98774,98777,98776,98772,98773,98775,98770,98771,98769');
+#info{
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 4px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    font-family: 'SF Pro Display', sans-serif;
+    transition: all .25s ease-in-out
+}
+
+#info .page-content {
+    display: flex;
+    flex-direction: column;
+	width: 88%; 
+	margin: 32px auto; 
+	padding: 32px; 
+	background: #fff;
+}
+
+#info .page-content .tabbed {
+	overflow-x: hidden; /* so we could easily hide the radio inputs */
+	margin: 32px 0;
+	padding-bottom: 16px;
+}
+
+#info .page-content .tabbed [type="radio"] {
+	/* hiding the inputs */
+	display: none;
+}
+
+#info .page-content .tabs {
+	display: flex;
+	align-items: stretch;
+    justify-content: space-between;
+	list-style: none;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+#info .page-content .tabs .actives {
+    width: 80%;
+    display: flex;
+	align-items: stretch;
+}
+#info .page-content .tab > label {
+	display: block;
+	margin-bottom: -1px;
+	padding: 6px;
+	color: #000;
+	font-size: 16px; 
+	font-weight: 500;
+	letter-spacing: -0.3px;
+	cursor: pointer;	
+	transition: all 0.3s;
+    margin: 0 6px;
+}
+
+#info .page-content .logout > a {
+	display: block;
+	margin-bottom: -1px;
+	padding: 6px;
+	color: #777;
+	font-size: 16px; 
+	font-weight: 400;
+	letter-spacing: -0.3px;
+	cursor: pointer;	
+	transition: all 0.3s;
+    margin: 0 6px;
+    text-decoration: none;
+}
+#info .page-content .tab:hover label {
+	color: #0048D5;
+}
+
+#info .page-content .tab-content {
+	display: none;
+}
+
+/* As we cannot replace the numbers with variables or calls to element properties, the number of this selector parts is our tab count limit */
+#info .page-content .tabbed [type="radio"]:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+#info .page-content .tabbed [type="radio"]:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+#info .page-content .tabbed [type="radio"]:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label,
+#info .page-content .tabbed [type="radio"]:nth-of-type(4):checked ~ .tabs .tab:nth-of-type(4) label,
+#info .page-content .tabbed [type="radio"]:nth-of-type(5):checked ~ .tabs .tab:nth-of-type(5) label {
+	color: #0048D5;
+}
+
+#info .page-content .tabbed [type="radio"]:nth-of-type(1):checked ~ .tab-content:nth-of-type(1),
+#info .page-content .tabbed [type="radio"]:nth-of-type(2):checked ~ .tab-content:nth-of-type(2),
+#info .page-content .tabbed [type="radio"]:nth-of-type(3):checked ~ .tab-content:nth-of-type(3),
+#info .page-content .tabbed [type="radio"]:nth-of-type(4):checked ~ .tab-content:nth-of-type(4) {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* Form design */
+#info .form{
+    width: 72%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    padding: 20px 0;
+}
+#info .bbt{
+    width: 72%;
+    padding: 16px;
+    border-radius: 24px;
+    background-color: #0048D5;
+    color: #fff;
+    margin-top: 24px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+#info .lbbt{
+    width: 160px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #0048D5;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'SF Pro Display', sans-serif;
+}
+#info .form .title{
+font-size: 30px;
+font-weight: 600;
+letter-spacing: -0.3px;
+max-width: 60%;
+text-align: center;
+margin: 12px 0;
+}
+
+#info .form  input:not([type="radio"]){
+    width: 72%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-family: 'SF Pro Display', sans-serif;
+    border: 1.8px solid #e0e0e0;
+}
+#info .form  .fc{
+    width: 72%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#info .form  .fc input{
+    width: 48%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-family: 'SF Pro Display', sans-serif;
+    border: 1.8px solid #e0e0e0;
+}
+
+@media screen and (max-width: 820px) {
+    #info{
+    width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+    #info .form {
+    width: 96vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    padding: 20px 0;
+}
+#info .form  input:not([type="radio"]){
+    width: 88%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-family: 'SF Pro Display', sans-serif;
+}
+#info .form  .fc{
+    width: 88%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#info .form  .fc input{
+    width: 48%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-family: 'SF Pro Display', sans-serif;
+    border: 1.8px solid #e0e0e0;
+}
+
+
+#info .page-content {
+    display: flex;
+    flex-direction: column;
+	width: 96vw; 
+	margin: 32px auto; 
+	padding: 2px; 
+	background: #fff;
+}
+#info .lbbt{
+    width: 64px;
+    padding: 6px;
+    border-radius: 12px;
+    background-color: #0048D5;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 300;
+    font-family: 'SF Pro Display', sans-serif;
+}
+#info .page-content .tabs {
+    width: 90vw;
+}
+#info .page-content .tabs .actives {
+    width: 95%;
+    display: flex;
+	align-items: stretch;
+}
+#info .page-content .tab > label {
+	display: block;
+	margin-bottom: -1px;
+	padding: 3px;
+	color: #000;
+	font-size: 10px; 
+	font-weight: 500;
+	letter-spacing: -0.3px;
+	cursor: pointer;	
+	transition: all 0.3s;
+    margin: 0 2px;
+}
+
+#info .page-content .logout > a {
+	display: block;
+	margin-bottom: -1px;
+	padding: 3px;
+	color: #777;
+	font-size: 10px; 
+	font-weight: 400;
+	letter-spacing: -0.3px;
+	cursor: pointer;	
+	transition: all 0.3s;
+    margin: 0 2px;
+    text-decoration: none;
+}
+}
+ </style>
+ <section id="info">
+    <div class="page-content">
+        <div class="tabbed">
+            <!-- radio a checker pour provoquer le tab -->
+            <input type="radio" id="tab1" name="css-tabs" >
+            <input type="radio" id="tab2" name="css-tabs" checked>
+            <input type="radio" id="tab3" name="css-tabs">
+            <input type="radio" id="tab4" name="css-tabs">
+            
+
+            <!-- Les tabs a afficher sur la barre de navigation -->
+            <ul class="tabs">
+                <span class="actives">
+                    <li class="tab"><label for="tab1">Commandes</label></li>
+                    <li class="tab"><label for="tab2">Information du Compte</label></li>
+                    <li class="tab"><label for="tab3">Changer mon mot de passe</label></li>
+                    <li class="tab"><label for="tab4">Changer mon adresse e-mail</label></li>
+                </span>
+                <li class="logout"><a href="#">Se déconnecter</a></li>
+            </ul>
+            
+
+            <!-- Le contenu des tabs par ordre -->
+            <div class="tab-content">
+                <!-- contenu Tab 1 a remplacer -->
+            </div>
+            <!-- Information du Compte -->
+            <div class="tab-content">
+                
+                <form  class="form">
+                    <button class="bbt" style="margin-bottom: 20px;">Ajouter une nouvelle adresse</button>
+                    <div class="fc">
+                        <input type="text" name="Prénom" placeholder="Prénom">
+                        <input type="text" name="Nom" placeholder="Nom">
+                    </div>
+
+                    <input type="text" name="Adresse" placeholder="Adresse">
+                    <input  type="text" name="Adresse1" placeholder="Adresse1">
+
+                    <div class="fc">
+                        <input type="text" name="code postal" placeholder="code postal">
+                        <input type="text" name="ville" placeholder="ville">
+                    </div>
+                    <input type="email" name="mail" placeholder="Adresse e-mail">
+                    <input  type="tel" name="num" placeholder="Numéros de téléphone">
+                    
+                    <div class="fc">
+                        <input type="submit" class="bbt" value="Modifier">
+                        <input type="reset" class="bbt" value="Supprimer">
+                    </div>
+                </form>
+            </div>
+            
+
+        </div>
+</div>
+ </section>
